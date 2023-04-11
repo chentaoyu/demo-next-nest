@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { map, toArray } from 'rxjs';
 import { UseInterceptors } from '@nestjs/common';
 import { ParamsInterceptor } from './params.interceptor';
+import { ConfigInterceptor } from './config.interceptor';
 
 @Controller()
 export class AppController {
@@ -10,7 +11,7 @@ export class AppController {
 
   @Get()
   @Render('index')
-  @UseInterceptors(ParamsInterceptor)
+  @UseInterceptors(ParamsInterceptor, ConfigInterceptor)
   home() {
     return this.appService.getBlogPosts().pipe(
       toArray(),
@@ -20,7 +21,7 @@ export class AppController {
 
   @Get(':id')
   @Render('[id]')
-  @UseInterceptors(ParamsInterceptor)
+  @UseInterceptors(ParamsInterceptor, ConfigInterceptor)
   /**
    * blogPost
    */
