@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { FC } from 'react';
 import { buildServerSideProps } from 'src/client/ssr/buildServerSideProps';
